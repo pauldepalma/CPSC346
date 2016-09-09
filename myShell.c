@@ -23,12 +23,12 @@ int main()
 
 
 //Reads input string from the key board.  Parses the input into arguments
-//where an is any string of characters that either begin the input or is
-//separated by the previous argument by a space
+//where any is any string of characters that either begin the input or is
+//separated by the previous argument by a space.  Returns a pointer to an array //of pointers to char.  char* argv[] is the model.
 //In the following example, the user has entered three arguments
 //myShell> ls -l cpsc346 
 //and optons  
-char* args getInput()
+char** args getInput()
 {
 }  
 
