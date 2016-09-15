@@ -1,28 +1,37 @@
 /*
-Dynamic memory 
-Purpose: To demonstrate calloc,free, strcpy 
-Usage: ./a.out hi
-Output: hi
+Purpose: To demonstrate the use of a system call 
+Usage: ./a.out <fileIn>  <fileOut>
+Output: copies <fileIn> to <fileOut> 
 */
 
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-char* copy(char*);
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 int main(int argc, char* argv[])
 {
- char* newStr = copy(argv[1]);
- printf("%s\n",newStr); 
- free (newStr);
- newStr = NULL; 
-}
+ int inFile, outFile;
+ int len;
+ char ch;
 
-char* copy(char* strIn)
-{
- char* strOut = calloc(strlen(strIn) + 1, sizeof(char));
+ if (argc != 3)
+ {
+  printf("Usage: copy <f1> <f2>\n");
+ }
 
- strcpy(strOut,strIn);
- return strOut;
+ //FMI, google fntl.h 
+ inFile = open(argv[1],O_RDONLY);  
+
+ //FMI google sys/stat.h
+ outFile = open(argv[2],O_WRONLY | O_CREAT, S_IRWXU); 
+
+ //read/write 1 byte into buffer whose address is stored in ch
+ while ((len = read(inFile,&ch, 1)) > 0)
+  {
+   write(outFile,&ch,1);
+  }
+ close(inFile);
+ close(outFile);
+ return 0;
 }

@@ -1,10 +1,7 @@
 /*
-File operations
-Purpose: Demonstrate file operations by copying a file and transforming
-  lower case characters to upper case.
+Purpose: To demonstrate conversion of strings to integers with scanf
 Usage: ./a.out input_file output_file
-Output: output_file is identical to input_file, except lowercase characters
-  have been transformed to uppercase. 
+Outpus: output_file holds the sum of the integers encoded in the input file. 
 */
 
 #include <ctype.h>
@@ -14,19 +11,15 @@ Output: output_file is identical to input_file, except lowercase characters
 int main(int argc, char* argv[])
 {
  FILE *ifp, *ofp;
- char c;
+ int sum = 0;
+ int num = 0; 
 
  ifp = fopen(argv[1],"r");
  ofp = fopen(argv[2],"w");
 
- //read a char, store it in a var, stop when end of file is encountered
- //notice getc instead of getchar
- while ((c = getc(ifp)) != EOF)
- {
-  if (islower(c))
-     c = toupper(c);
-  putc(c,ofp);
- }
+ while (fscanf(ifp, "%d", &num) == 1)
+  sum += num;
+ fprintf(ofp, "The sum is %d\n", sum);
 
  fclose(ifp);
  fclose(ofp);

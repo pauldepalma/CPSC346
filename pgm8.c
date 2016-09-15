@@ -1,49 +1,27 @@
 /*
-Pointers 
-Purpose: To demonstrate the use of pointer with local variables
-Usage: ./a.out a b
-Output: b a
-*/  
+Purpose: To demonstrate calloc,free, strcpy 
+Usage: ./a.out hi
+Output: hi
+*/
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-void swap(char*,char*);
+char* copy(char*);
 
 int main(int argc, char* argv[])
 {
- char a, b;
-
- //with pointers
- a = *argv[1];
- b = *argv[2];
- 
- printf("original\n");
- printf("%c  %c\n",a,b);
-
- swap(&a,&b);
- printf("swapped\n");
- printf("%c  %c\n",a,b);
- 
- //reswap
- swap(&a,&b);
- printf("reswapped\n");
- printf("%c  %c\n",a,b);
-
- //with a 2-D arrar
- a = argv[1][0];
- b = argv[2][0];
-
- printf("swapped\n");
- swap(&a,&b);
- printf("%c  %c\n",a,b);
-
+ char* newStr = copy(argv[1]);
+ printf("%s\n",newStr); 
+ free (newStr);
+ newStr = NULL; 
 }
 
-void swap(char* a, char* b)
+char* copy(char* strIn)
 {
- char c;
+ char* strOut = calloc(strlen(strIn) + 1, sizeof(char));
 
-  c = *a;
- *a = *b;
- *b = c;
+ strcpy(strOut,strIn);
+ return strOut;
 }

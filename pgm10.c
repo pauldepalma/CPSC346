@@ -1,38 +1,33 @@
 /*
-A System call 
-Purpose: To demonstrate the use of a system call 
-Usage: ./a.out <fileIn>  <fileOut>
-Output: copies <fileIn> to <fileOut> 
+Purpose: Demonstrate file operations by copying a file and transforming
+  lower case characters to upper case.
+Usage: ./a.out input_file output_file
+Output: output_file is identical to input_file, except lowercase characters
+  have been transformed to uppercase. 
 */
 
+#include <ctype.h>
 #include <stdio.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <unistd.h>
+#include <stdlib.h>
 
 int main(int argc, char* argv[])
 {
- int inFile, outFile;
- int len;
- char ch;
+ FILE *ifp, *ofp;
+ char c;
 
- if (argc != 3)
+ ifp = fopen(argv[1],"r");
+ ofp = fopen(argv[2],"w");
+
+ //read a char, store it in a var, stop when end of file is encountered
+ //notice getc instead of getchar
+ while ((c = getc(ifp)) != EOF)
  {
-  printf("Usage: copy <f1> <f2>\n");
+  if (islower(c))
+     c = toupper(c);
+  putc(c,ofp);
  }
 
- //FMI, google fntl.h 
- inFile = open(argv[1],O_RDONLY);  
-
- //FMI google sys/stat.h
- outFile = open(argv[2],O_WRONLY | O_CREAT, S_IRWXU); 
-
- //read/write 1 byte into buffer whose address is stored in ch
- while ((len = read(inFile,&ch, 1)) > 0)
-  {
-   write(outFile,&ch,1);
-  }
- close(inFile);
- close(outFile);
+ fclose(ifp);
+ fclose(ofp);
  return 0;
-}
+} 
