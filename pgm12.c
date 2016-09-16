@@ -1,5 +1,4 @@
 /*
-manipulating the file pointer, argument checking 
 Purpose: To demonstrate random access file operations, argument checking 
 Usage: ./a.out input_file
 Output: file is displayed in reverse 
@@ -26,7 +25,7 @@ int main(int argc, char* argv[])
  {
   ch = getc(ifp);
   putchar(ch);  
-  fseek(ifp, -2, SEEK_CUR); //back up one byte 
+  fseek(ifp, -2, SEEK_CUR); //back up two bytes 
  }
  ch = getc(ifp); //read the remaining character
  putchar(ch);  
