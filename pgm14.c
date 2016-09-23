@@ -6,9 +6,10 @@ Output: directory listing
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdio.h>
-int main()
+int main(int argc, char* argv[])
 {
   pid_t pid; 
+  char** args = NULL;
 
   pid = fork();
 
@@ -19,7 +20,8 @@ int main()
   } 
   else
    if (pid == 0)  //child process
-    execlp("/bin/ls", "ls", NULL); 
+    //execlp("/bin/ls","ls" , NULL); 
+    execvp("/bin/ls",argv); 
    else           //parent process
    {
     wait(NULL);
