@@ -1,6 +1,6 @@
 /*
-pthread_join 
-purpose: demonstrate how to synchronize threads.
+purpose: A simple multi-threaded task to illustrate that threads share
+         memory
 Output: output from threads is displayed in the order of creation
 */ 
 
@@ -8,34 +8,32 @@ Output: output from threads is displayed in the order of creation
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
-#define NUM_THREADS 10
+void* worker(void* param);
 
-void* print_hello_world(void*);
-
+int sum = 0;
 
 int main(int argc, char* argv[])
 {
-   pthread_t threads[NUM_THREADS];  
+   pthread_t tid1, tid2;  
+   pthread_create(&tid1, NULL, worker, argv[1]);
+   pthread_join(tid1,NULL); 
 
-   int status, i;
-
-  for (i = 0; i < NUM_THREADS; i++)
-  {
-    printf("In Main.  Creating thread %d\n", i);
-    status = pthread_create(&threads[i], NULL, print_hello_world, (void*)i );
-    pthread_join(threads[i],NULL); //wait for thread[i] to complete 
-  }
-  if (status != 0)
-  {
-    printf("Error in thread %d: %d\n", i, status);
-    exit(-1);
-  }
-  return 0; 
+   printf("Thread1 sum = %d\n",sum);  
+   return 0;
 }
 
-void* print_hello_world(void* tid)
+void* worker(void* param)
 {
- printf("Hello from thread %d\n",(int)tid);
- pthread_exit(NULL);
+ int i = 1;
+ int upper = atoi(param);
+ 
+ while(i <= upper)
+ {
+  sum += i;
+  ++i;
+ }
+ pthread_exit(0);
 }
+
