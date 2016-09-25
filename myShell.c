@@ -1,44 +1,59 @@
+/*
+Outline of a shell
+*/
+
 #include <stdio.h>
-#include <unistd.h>
+#include <unistd.h> 
 
 #define MAX_LINE 80
+#define TRUE 80
 
 char** getInput();
+char** parseInput(char*);
 void dispOutput(char**);
 
-int main()
+int main(int argc, char* argv[])
 {
   //A pointer to an array of pointers to char.  In essence, an array of 
   //arrays.  Each of the second level arrays is a c-string. These hold
   //the command line arguments entered by the user.
+  //as exactly the same structure as char* argv[]
   char **args;  
 
-  int more = 1;
-  while (more)
+  while (TRUE)
   {
      printf("myShell> ");
      fflush(stdout);
      args = getInput();
      dispOutput(args);
-     //here accept input from the user 
-     //set more to 0 if input == "quit"  (use strcmp)  
+     //if the user has entered "quit" break out of the loop.
+     break;
   }
    return 0;
 }
 
-
-//Reads input string from the key board.  Parses the input into argument 
-//where an argument is any string of characters that either begins 
-//the input or is
-//separated by the previous argument by a space
-//In the following example, the user has entered three arguments
-//myShell> ls -l cpsc346 
+/*
+Reads input string from the key board.   
+invokes parseInput and returns the parsed input to main
+*/
 char** getInput()
 {
 }  
 
-
-//Displays the arguments entered by the user and parsed by getInput
+/*
+inp is a cstring holding the keyboard input
+returns an array of cstrings, each holding one of the arguments entered at
+the keyboard. The structure is the same as that of argv
+Here the user has entered three arguements:
+myShell>cp x y
+*/ 
+char** parseInput(char* inp)
+{
+} 
+ 
+/*
+Displays the arguments entered by the user and parsed by getInput
+*/
 void dispOutput(char** args)
 {
 }  
