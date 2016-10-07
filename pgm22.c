@@ -1,6 +1,8 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
+#include <unistd.h>
+#include <wait.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,13 +34,13 @@ void cleanup(int,int,int);
 
 int main(int argc, char* argv[])
 {
- sem_struct down[1], up[1]; //create semaphore structs
+ sem_struct wait[1], signal[1]; //create semaphore structs
  int mutex, empty, full;   //will hold semaphore identifiers 
  int value, status, ch_stat, i;
 
  //set down/up structs used in semop 
- set_sem_struct(down,-1);
- set_sem_struct(up,1);
+ set_sem_struct(wait,-1);
+ set_sem_struct(signal,1);
  
  //create semaphore sets using arbitrary int unique to the semaphore set. 
  mutex = create_semaphore(0);
@@ -59,21 +61,21 @@ int main(int argc, char* argv[])
     { 
      for (i = 0; i < 2; i++)
      {
-      if (semop(mutex, up, 1) == -1)
+      if (semop(mutex, signal, 1) == -1)
        fatal_error("mutex"); 
-      if (semop(empty, up, 1) == -1)
+      if (semop(empty, signal, 1) == -1)
        fatal_error("empty"); 
-      if (semop(full, up, 1) == -1)
+      if (semop(full, signal, 1) == -1)
        fatal_error("full"); 
      }
     }
   else    //parent
     { 
-     if (semop(mutex, down, 1) == -1)
+     if (semop(mutex, wait, 1) == -1)
        fatal_error("mutex"); 
-     if (semop(empty, down, 1) == -1)
+     if (semop(empty, wait, 1) == -1)
        fatal_error("empty"); 
-     if (semop(full, down, 1) == -1)
+     if (semop(full, wait, 1) == -1)
        fatal_error("down"); 
      status = wait(&ch_stat); //wait for child to exit
     }
