@@ -5,6 +5,9 @@
    runs first, it blocks because the pipe is empty. 
 */ 
 
+
+#include <unistd.h>
+#include <wait.h>
 #include <stdio.h>
 
 void child(int []);
@@ -34,17 +37,17 @@ void child(int fildes[])
 
  printf("Simcha Announces: ho fame, ho fame, ho fame!!!!!\n"); 
  printf("Simcha Announces: I'm waiting\n\n");
+ //blocks waiting for a message
  read(fildes[0], buffer,1);
- //sleep(2);
 
- //while the end of message marker has not been encountered
- printf("Simcha receives message from Paul: \n");
- while (buffer[0] != '+'){
- //while (1){
+ printf("Simcha receives a  message from Paul: \n");
+ while (1)
+  {
+    if (buffer[0] == '+')  //end of msg flag
+      break;
     printf("%c",buffer[0]);
     read(fildes[0], buffer,1);
-    }
- sleep(2);
+  }
  printf("\nSimcha Announces: Mangiato bene!!!!\n");
    
 }
@@ -57,12 +60,12 @@ void parent(int fildes[])
  char s3[] = " Do you want a nut\n+";
  sleep(3);
  
- printf("Paul is sending a message\n");
+ printf("Paul is sending a message\n\n");
  write(fildes[1], s1, sizeof(s1));
  write(fildes[1], s2, sizeof(s2));
  write(fildes[1], s3, sizeof(s3));
  wait(NULL);
- sleep(2);
+ sleep(3);
  printf("Paul Announces: I'm glad you liked it, Simcha\n");
  
  printf("n");
