@@ -40,18 +40,19 @@ Counters
 numPageRefs: number of page table references
 numPageFaults: counts number of page faults
 numTLBRefs: number of TLB tries
-numTLBHits: number of TLB references that resutled in a hit
+numTLBHits: number of TLB references that resulted in a hit
 
 Addresses 
 logical_address: address read from disk, simulating an address reference 
 virtualAddress: variable of type virtAddress. Parse of logical_address into page number and offset
 physical_page: page frame number
+physical_address: bytes from the 0th byte of RAM, i.e., the actual physical address 
 logical_page: page table number
 offset: displacement within page table/frame 
 
 Output
 Virtual address: logical_address, in Addresses, above
-Physical address: physical_page in Addresses, above 
+Physical address: physical_address in Addresses, above 
 value: value stored in main_memory at physical_page displacement plus offset
 */
 
@@ -100,7 +101,7 @@ int main(int argc, char *argv[])
   //extract low order 8 bits from the logical_address. This is the offset
   offset = logical_address & OFFSET_MASK;
 
-  //extract bits 8 through 15. This is the page number by shifting right 8 bits 
+  //extract bits 8 through 15. This is the page number gotten by shifting right 8 bits 
   logical_page = (logical_address >> OFFSET_BITS) & PAGE_MASK;
 
   //When you write the program, the physical page will increment by 1 for each copy
@@ -120,7 +121,7 @@ int main(int argc, char *argv[])
   signed char value = main_memory[physical_page * PAGE_SIZE + offset];
        
   printf("Virtual address: %d Physical address: %d Value: %d\n", 
-          logical_address, offset, value);
+          logical_address, physical_address, value);
     
   return 0;
 }
