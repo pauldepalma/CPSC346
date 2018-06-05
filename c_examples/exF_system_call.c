@@ -1,7 +1,11 @@
 /*
-Purpose: To demonstrate the use of a system call 
-Usage: ./a.out <fileIn>  <fileOut>
-Output: copies <fileIn> to <fileOut> 
+Class: CPSC 346-01 & CPSC 346-02
+Team Member 1: Paul De Palma
+Team Member 2: N/A 
+GU Username of project lead: depalma
+Pgm Name: exF_system_call.c
+Pgm Desc: Demonstrates a system call to copy a file
+Usage: ./a.out file_in file_out 
 */
 
 #include <stdio.h>
@@ -17,7 +21,7 @@ int main(int argc, char* argv[])
 
  if (argc != 3)
  {
-  printf("Usage: copy <f1> <f2>\n");
+  printf("Usage: copy f1 f2\n");
  }
 
  //FMI, google fntl.h 

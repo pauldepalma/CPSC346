@@ -1,8 +1,13 @@
 /*
-Purpose: To demonstrate random access file operations, argument checking 
-Usage: ./a.out input_file
-Output: file is displayed in reverse 
+Class: CPSC 346-01 & CPSC 346-02
+Team Member 1: Paul De Palma
+Team Member 2: N/A 
+GU Username of project lead: depalma
+Pgm Name: exH_random_access.c
+Pgm Desc: displays random access file operations
+Usage: ./a.out file_name 
 */
+
 
 #include <stdio.h>
 #include <stdlib.h>

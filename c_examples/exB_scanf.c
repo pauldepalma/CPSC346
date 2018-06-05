@@ -1,7 +1,8 @@
 /*
 Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
-GU Username of TM 1: depalma
+Team Member 2: N/A 
+GU Username of project lead: depalma
 Pgm Name: exB_scanf.c
 Pgm Desc: Reads and displays a string
 Usage: ./a.out 

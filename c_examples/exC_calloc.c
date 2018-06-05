@@ -1,7 +1,8 @@
 /*
 Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
-GU Username of TM 1: depalma
+Team Member 2: N/A 
+GU Username of project lead: depalma
 Pgm Name: exC_calloc.c
 Pgm Desc: function call, dynamic allocation of an array with calloc 
 Usage: ./a.out 
