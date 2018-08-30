@@ -3,7 +3,7 @@ Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
-Pgm Name: exF_system_call.c
+Pgm Name: ex8.c
 Pgm Desc: Demonstrates a system call to copy a file
 Usage: ./a.out file_in file_out 
 */

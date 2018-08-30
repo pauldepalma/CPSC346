@@ -3,7 +3,7 @@ Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
-Pgm Name: exH_random_access.c
+Pgm Name: ex9.c
 Pgm Desc: displays random access file operations
 Usage: ./a.out file_name 
 */

@@ -3,7 +3,7 @@ Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
-Pgm Name: exC_calloc.c
+Pgm Name: ex3.c
 Pgm Desc: function call, dynamic allocation of an array with calloc 
 Usage: ./a.out 
 */
@@ -34,7 +34,7 @@ int main()
 
 int* get_inp()
 {
- //allocate a block of ints of size MAX
+ //allocate a block of ints of size MAX; initialize the block to 0
  int* inp = (int*) calloc(MAX,sizeof(int));
 
  int i = 0;

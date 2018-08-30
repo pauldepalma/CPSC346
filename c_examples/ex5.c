@@ -3,7 +3,7 @@ Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
-Pgm Name: exDD_malloc.c
+Pgm Name: ex5_malloc.c
 Pgm Desc: function call, dynamic allocation of an array of character arrays 
 Usage: ./a.out 
 */
@@ -22,6 +22,7 @@ int main()
  char** inp = get_inp();
 
  int i = 0;
+ printf("\n");
  while (i < MAX)
  {
   printf("%s\n",inp[i]);

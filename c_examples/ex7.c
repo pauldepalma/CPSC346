@@ -3,7 +3,7 @@ Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
-Pgm Name: exG_file_ops.c
+Pgm Name: ex7.c
 Pgm Desc: illustrates file operations by copying a file and transforming
           lower case characters to upper case
 Usage: ./a.out input_file output_file 

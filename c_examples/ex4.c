@@ -3,7 +3,7 @@ Class: CPSC 346-01 & CPSC 346-02
 Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
-Pgm Name: exD_malloc.c
+Pgm Name: ex4.c
 Pgm Desc: function call, dynamic allocation of character array with malloc
 Usage: ./a.out 
 */
