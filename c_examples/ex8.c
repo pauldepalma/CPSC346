@@ -28,6 +28,9 @@ int main(int argc, char* argv[])
  inFile = open(argv[1],O_RDONLY);  
 
  //FMI google sys/stat.h
+ //Silberschatz pp. 62-63
+ //"System calls provide an interace to the services made available by an o/s"
+ //Both open and read are system calls.  
  outFile = open(argv[2],O_WRONLY | O_CREAT, S_IRWXU); 
 
  //read/write 1 byte into buffer whose address is stored in ch

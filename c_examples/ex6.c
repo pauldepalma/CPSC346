@@ -27,8 +27,6 @@ int main()
  printf("here is your input : %s\n",inp);
  
  disp_inp(inp); 
- //int num_words = wc(inp);
- //printf("%d words\n",num_words);
 
  free(inp);  //return dynamially allocated memory to the heap
  return 0;

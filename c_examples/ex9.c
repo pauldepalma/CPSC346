@@ -4,7 +4,7 @@ Team Member 1: Paul De Palma
 Team Member 2: N/A 
 GU Username of project lead: depalma
 Pgm Name: ex9.c
-Pgm Desc: displays random access file operations
+Pgm Desc: demonstrates random access file operations
 Usage: ./a.out file_name 
 */
 
