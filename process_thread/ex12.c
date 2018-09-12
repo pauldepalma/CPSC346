@@ -35,7 +35,7 @@ int main(void)
      else 
         {
          sleep(2);
-         //fork returns pid to parent
+         //fork returns pid of child to parent
          printf("i'm the parent.  My child has pid = %d\n",value);
          printf("i'm going to wait for my child to exit\n\n");
          status = wait(&ch_stat);
