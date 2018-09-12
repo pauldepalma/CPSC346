@@ -6,11 +6,20 @@ Output: directory listing
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
+
+#define MAX_LINE 80
+
 int main(int argc, char* argv[])
 {
   pid_t pid; 
-  char** args = NULL;
 
+  char* args[MAX_LINE]; 
+
+  args[0] = "/bin/ls";
+  args[1] = "-l";
+  args[2] = NULL;
+ 
   pid = fork();
 
   if (pid < 0)  //fork failed
@@ -20,12 +29,11 @@ int main(int argc, char* argv[])
   } 
   else
    if (pid == 0)  //child process
-    //execlp("/bin/ls","ls" , NULL); 
-    execvp("/bin/ls",argv); 
+     execvp(args[0],args);  //load args[0] into the child's address space 
    else           //parent process
    {
     wait(NULL);
-    fprintf(stdout, "Child complete");
+    fprintf(stdout, "Child complete\n");
    }
   return 0;
 }
