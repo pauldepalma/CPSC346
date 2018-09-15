@@ -64,9 +64,9 @@ void standard()
 
 /*
 pre: none
-post: displays time since the last reboot (DD:HH:MM:SS), time when the system was last booted 
-      (MM/DD/YY - HH:MM), number of processes that have been created since the last reboot.
-Hint: strftime could be useful
+post: displays time since the last reboot (DD:HH:MM:SS), time when the system was last 
+      booted, number of processes that have been creates since the last reboot 
+      Hint: strftime could be useful
 */
 void history()
 {
