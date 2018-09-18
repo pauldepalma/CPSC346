@@ -1,5 +1,5 @@
 /*
-Using execlp to overlay the memory space of a child    
+Using execvp to overlay the memory space of a child    
 Output: directory listing  
 */
 

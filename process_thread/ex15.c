@@ -23,7 +23,8 @@ Output:output from theads is displayed asynchronously
 a void pointer in c can store an address of any type.  It is 
 a C convention for a raw address.  A void pointer takes on the
 type of the pointer assigned to it.  You can see this as a great
-liberation, but also as a potential problem
+liberation, but also as a potential problem, as the compiler warning
+indicates.
 */
 void* print_hello_world(void*);
 
@@ -40,7 +41,7 @@ int main(int argc, char* argv[])
     /*
     1) i is the thread number/id
     2) NULL says accept default attributes
-    3) print_hollow_world is the function to execute
+    3) print_hellow_world is the function to execute
     4) i is the parameter to  print_hello_world
     */
     status = pthread_create(&threads[i], NULL, print_hello_world, (void*)i );
