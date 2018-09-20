@@ -45,6 +45,7 @@ void* worker(void* param)
 
 void* worker1(void* param)
 {
+ sum = sum + atoi(param);
  pthread_exit(0);
 }
 
