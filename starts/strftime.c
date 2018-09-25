@@ -8,11 +8,12 @@ int main()
  char buf[80];
 
  time(&rawtime);
+ printf("%d\n",(int)rawtime);
  timeinfo = localtime(&rawtime);
 
  //%p is for A.M. or P.M.
  //%T is ISO 8601 time format(HH:MM:SS)
- strftime(buf, 80, "The time is %T %p.",timeinfo);
+ strftime(buf, 80, "%T\n",timeinfo);
  puts (buf);
 
  return 0;
