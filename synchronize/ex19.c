@@ -48,8 +48,6 @@ void parent(char* address, int shmid)
  
 void child(char* address)
  {
-   //initialize it to 'A'
-   *address = 'A';
    //display the current value of shared memory
    printf("Child holds shared memory value: %c\n",*address);
 
