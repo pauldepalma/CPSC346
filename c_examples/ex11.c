@@ -34,7 +34,7 @@ void swap(char* a, char* b)
 {
  char* c = (char*) malloc(strlen(a) + 1);
 
- #how would you write strcpy? 
+ //how would you write strcpy? 
  strcpy(c, a); 
  strcpy(a,b); 
  strcpy(b,c); 
