@@ -34,13 +34,13 @@ void cleanup(int,int,int);
 
 int main(int argc, char* argv[])
 {
- sem_struct wait[1], signal[1]; //create semaphore structs
+ sem_struct s_wait[1], s_signal[1]; //create semaphore structs
  int mutex, empty, full;   //will hold semaphore identifiers 
  int value, status, ch_stat, i;
 
- //set down/up structs used in semop 
- set_sem_struct(wait,-1);
- set_sem_struct(signal,1);
+ //set wait/signal structs used in semop 
+ set_sem_struct(s_wait,-1);
+ set_sem_struct(s_signal,1);
  
  //create semaphore sets using arbitrary int unique to the semaphore set. 
  mutex = create_semaphore(0);
@@ -61,21 +61,21 @@ int main(int argc, char* argv[])
     { 
      for (i = 0; i < 2; i++)
      {
-      if (semop(mutex, signal, 1) == -1)
+      if (semop(mutex, s_signal, 1) == -1)
        fatal_error("mutex"); 
-      if (semop(empty, signal, 1) == -1)
+      if (semop(empty, s_signal, 1) == -1)
        fatal_error("empty"); 
-      if (semop(full, signal, 1) == -1)
+      if (semop(full, s_signal, 1) == -1)
        fatal_error("full"); 
      }
     }
   else    //parent
     { 
-     if (semop(mutex, wait, 1) == -1)
+     if (semop(mutex, s_wait, 1) == -1)
        fatal_error("mutex"); 
-     if (semop(empty, wait, 1) == -1)
+     if (semop(empty, s_wait, 1) == -1)
        fatal_error("empty"); 
-     if (semop(full, wait, 1) == -1)
+     if (semop(full, s_wait, 1) == -1)
        fatal_error("down"); 
      status = wait(&ch_stat); //wait for child to exit
     }

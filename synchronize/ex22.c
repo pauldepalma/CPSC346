@@ -65,7 +65,8 @@ void parent(int fildes[])
  write(fildes[1], s2, sizeof(s2));
  write(fildes[1], s3, sizeof(s3));
  wait(NULL);
- sleep(3);
+ //sleep(3);
+ 
  printf("Paul Announces: I'm glad you liked it, Simcha\n");
  
  printf("n");
