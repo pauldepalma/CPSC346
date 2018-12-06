@@ -120,7 +120,8 @@ files open_files(char* argv1, char* argv2)
 dec_addr translate(FILE* ifp, int* logical_address_out)
 {
  int logical_address;
- dec_addr addr; fscanf(ifp,"%d", &logical_address);
+ dec_addr addr; 
+ fscanf(ifp,"%d", &logical_address);
  addr.offset = logical_address & OFFSET_MASK;
  addr.logical_page = (logical_address >> OFFSET_BITS) & PAGE_MASK;
 
