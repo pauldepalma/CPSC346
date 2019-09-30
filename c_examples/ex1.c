@@ -14,7 +14,7 @@ Usage: ./a.out "hello world"
 int main(int argc, char* argv[])
 {
  printf("There are %d arguments\n",argc);
- printf("Here is the second: %s\n",argv[1]); 
+ printf("Here is the second: %c\n",argv[1]); 
  return 0;
 }
  
